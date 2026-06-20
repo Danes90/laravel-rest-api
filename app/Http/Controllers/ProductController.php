@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ProductService;
 use App\Http\Requests\ProductStoreRequest;
+use App\Http\Resources\ProductResource;
 
 
 class ProductController extends Controller
@@ -14,9 +15,9 @@ class ProductController extends Controller
 
     public function index()
     {
-        return response()->json([
-            'data' => $this->service->getAll()
-        ]);
+        return ProductResource::collection(
+            $this->service->getAll()
+        );
     }
 
     public function store(ProductStoreRequest $request){
