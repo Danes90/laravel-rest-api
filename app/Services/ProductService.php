@@ -20,4 +20,19 @@ class ProductService
     {
         return $this->repository->create($data);
     }
+
+    public function find(int $id)
+    {
+        return $this->repository->find($id);
+    }
+
+    public function update(int $id, array $data)
+    {
+        return $this->repository->update($id, $data);
+    }
+
+    public function delete(int $id): void
+    {
+        $this->repository->delete($id);
+    }
 }
